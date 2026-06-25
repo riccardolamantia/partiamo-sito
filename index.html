@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>partiAMO? — Viaggi tra sconosciuti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --nero: #111110;
+      --sabbia: #F5F0E8;
+      --sabbia-scura: #EAE4D8;
+      --grigio: #888580;
+      --grigio-chiaro: #D6D1C8;
+      --accent: #C8A96E;
+      --bianco: #FDFCFA;
+    }
+
+    body {
+      background: var(--bianco);
+      color: var(--nero);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(253,252,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grigio-chiaro);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.35rem;
+      color: var(--nero);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--grigio);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--nero); }
+
+    .nav-ig {
+      color: var(--nero) !important;
+      border-bottom: 1px solid var(--nero);
+      padding-bottom: 1px;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px;
+      background: var(--sabbia);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grigio);
+      margin-bottom: 28px;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--grigio);
+      max-width: 380px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--nero);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--nero);
+      padding-bottom: 4px;
+      width: fit-content;
+      transition: gap 0.3s;
+    }
+    .hero-cta:hover { gap: 20px; }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.5);
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ---- SEZIONI ---- */
+    .section { padding: 100px 60px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grigio);
+      margin-bottom: 20px;
+    }
+
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    /* ---- CHI SIAMO ---- */
+    .chi-siamo {
+      background: var(--bianco);
+      border-top: 1px solid var(--grigio-chiaro);
+    }
+
+    .chi-siamo-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .chi-siamo-text p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.85;
+      margin-top: 32px;
+    }
+    .chi-siamo-text p + p { margin-top: 20px; }
+
+    .stat-item {
+      padding: 32px 0;
+      border-top: 1px solid var(--grigio-chiaro);
+    }
+    .stat-item:last-child { border-bottom: 1px solid var(--grigio-chiaro); }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--nero);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--grigio);
+    }
+
+    /* ---- VIAGGI ---- */
+    .viaggi {
+      background: var(--sabbia);
+      border-top: 1px solid var(--grigio-chiaro);
+    }
+
+    .viaggi-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+
+    .link-arrow {
+      text-decoration: none;
+      color: var(--grigio);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--grigio-chiaro);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .link-arrow:hover { color: var(--nero); border-color: var(--nero); }
+
+    .viaggi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .viaggio-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 3/4;
+      background: var(--nero);
+    }
+
+    .viaggio-card:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .viaggio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .viaggio-card:hover img { transform: scale(1.04); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+
+    .card-dest {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .card-data {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .card-posti {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0;
+      transition: margin-bottom 0.3s;
+    }
+
+    .card-wa-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 9px 16px;
+      border-radius: 4px;
+      width: fit-content;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .viaggio-card:hover .card-wa-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- GALLERIA ---- */
+    .galleria {
+      background: var(--bianco);
+      border-top: 1px solid var(--grigio-chiaro);
+    }
+
+    .galleria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .gal-item {
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: var(--sabbia-scura);
+    }
+
+    .gal-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 2/1;
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .gal-item:hover img { transform: scale(1.04); }
+
+    /* ---- NEWSLETTER ---- */
+    .newsletter {
+      background: var(--nero);
+      color: white;
+      text-align: center;
+      padding: 100px 60px;
+      border-top: 1px solid var(--grigio-chiaro);
+    }
+
+    .newsletter .section-label { color: rgba(255,255,255,0.35); }
+
+    .newsletter .section-h2 {
+      color: white;
+      margin-bottom: 14px;
+    }
+
+    .newsletter-sub {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      padding: 14px 20px;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-input:focus { border-color: rgba(255,255,255,0.35); }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.28); }
+
+    .newsletter-btn {
+      background: white;
+      color: var(--nero);
+      border: none;
+      border-radius: 0 4px 4px 0;
+      padding: 14px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .newsletter-btn:hover { background: var(--sabbia); }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--nero);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.22);
+      font-size: 0.78rem;
+    }
+
+    /* ---- HAMBURGER ---- */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--nero);
+      transition: all 0.3s;
+    }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 61px;
+      left: 0; right: 0;
+      background: rgba(253,252,250,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grigio-chiaro);
+      z-index: 99;
+      padding: 8px 0 16px;
+    }
+
+    .nav-mobile-menu.open { display: block; }
+
+    .nav-mobile-menu a {
+      display: block;
+      padding: 14px 24px;
+      text-decoration: none;
+      color: var(--grigio);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--grigio-chiaro);
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; color: var(--nero); font-weight: 500; }
+    .nav-mobile-menu a:active { background: var(--sabbia); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 48px 24px 40px; }
+      .hero-right { min-height: 320px; }
+      .section { padding: 72px 24px; }
+      .chi-siamo-inner { grid-template-columns: 1fr; gap: 40px; }
+      .viaggi-grid { grid-template-columns: 1fr 1fr; }
+      .viaggio-card:first-child { grid-row: span 1; aspect-ratio: 3/4; }
+      .card-dest { font-size: 1.1rem; }
+      .card-data { font-size: 0.68rem; margin-bottom: 8px; }
+      .card-posti { font-size: 0.7rem; }
+      .card-overlay { padding: 14px; }
+      .galleria-grid { grid-template-columns: 1fr 1fr; }
+      .gal-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+      .newsletter { padding: 72px 24px; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { border-right: 1px solid rgba(255,255,255,0.12); border-bottom: none; border-radius: 4px 4px 0 0; }
+      .newsletter-btn { border-radius: 0 0 4px 4px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+      .viaggi-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">partiAMO?</a>
+    <ul class="nav-links">
+      <li><a href="#chi-siamo">Chi siamo</a></li>
+      <li><a href="#viaggi">Viaggi</a></li>
+      <li><a href="#gallery">Momenti</a></li>
+      <li><a href="https://instagram.com/_partiamo" target="_blank" class="nav-ig">@_partiamo</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#chi-siamo" onclick="closeMenu()">Chi siamo</a>
+    <a href="#viaggi" onclick="closeMenu()">Viaggi</a>
+    <a href="#gallery" onclick="closeMenu()">Momenti</a>
+    <a href="https://instagram.com/_partiamo" target="_blank" onclick="closeMenu()">@_partiamo</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Viaggi tra sconosciuti</p>
+      <h1 class="hero-h1">
+        Parti.<br>
+        <em>Conosci.</em><br>
+        Torna diverso.
+      </h1>
+      <p class="hero-sub">
+        Organizziamo viaggi di gruppo per chi vuole esplorare il mondo senza aspettare che gli amici si liberino. Nessun piano fisso. Solo persone con le stesse vibes.
+      </p>
+      <a href="#viaggi" class="hero-cta">
+        Scopri i prossimi viaggi
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-right">
+      <img src="img/cinque-terre.jpg" alt="Cinque Terre">
+      <div class="hero-scroll-hint"><div class="scroll-line"></div></div>
+    </div>
+  </section>
+
+  <!-- CHI SIAMO -->
+  <section class="section chi-siamo" id="chi-siamo">
+    <div class="chi-siamo-inner">
+      <div class="chi-siamo-text">
+        <p class="section-label">Chi siamo</p>
+        <h2 class="section-h2">Un viaggio nasce<br>sempre da un'idea folle.</h2>
+        <p>
+          partiAMO? è nata da una semplice convinzione: i viaggi più belli sono quelli fatti con le persone giuste. Organizziamo esperienze di gruppo per chi ha voglia di partire, di scoprire posti nuovi e di farlo con persone che non ha mai visto prima.
+        </p>
+        <p>
+          Non siamo un'agenzia. Siamo una community. Chi parte con noi cerca good vibes, avventura e connessioni vere. Il resto lo decide il viaggio.
+        </p>
+      </div>
+      <div>
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Viaggi organizzati</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Persone partite con noi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Destinazioni esplorate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Rimpianti</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIAGGI -->
+  <section class="section viaggi" id="viaggi">
+    <div class="viaggi-header">
+      <div>
+        <p class="section-label">Prossime partenze</p>
+        <h2 class="section-h2">Dove andiamo?</h2>
+      </div>
+      <a href="#" class="link-arrow">Tutti i viaggi →</a>
+    </div>
+
+    <div class="viaggi-grid">
+
+      <div class="viaggio-card">
+        <img src="img/group-spagna.jpg" alt="Spagna">
+        <div class="card-overlay">
+          <div class="card-dest">Spagna</div>
+          <div class="card-data">Andalusia · Agosto 2025</div>
+          <div class="card-posti">● 3 posti disponibili</div>
+          <a href="https://wa.me/393466840207?text=Ciao!%20Vorrei%20info%20sul%20viaggio%20in%20Spagna" target="_blank" class="card-wa-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Prenota su WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="viaggio-card">
+        <img src="img/gorge-spagna.jpg" alt="Caminito del Rey">
+        <div class="card-overlay">
+          <div class="card-dest">Caminito del Rey</div>
+          <div class="card-data">Málaga · Settembre 2025</div>
+          <div class="card-posti">● 5 posti disponibili</div>
+          <a href="https://wa.me/393466840207?text=Ciao!%20Vorrei%20info%20sul%20Caminito%20del%20Rey" target="_blank" class="card-wa-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Prenota su WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="viaggio-card">
+        <img src="img/beach-calabria.jpg" alt="Calabria">
+        <div class="card-overlay">
+          <div class="card-dest">Calabria</div>
+          <div class="card-data">Costa degli Dei · Luglio 2025</div>
+          <div class="card-posti">● 2 posti disponibili</div>
+          <a href="https://wa.me/393466840207?text=Ciao!%20Vorrei%20info%20sul%20viaggio%20in%20Calabria" target="_blank" class="card-wa-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Prenota su WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="viaggio-card">
+        <img src="img/collage-girasoli.jpg" alt="Spagna girasoli" style="object-position: top;">
+        <div class="card-overlay">
+          <div class="card-dest">Siviglia</div>
+          <div class="card-data">Spagna · Ottobre 2025</div>
+          <div class="card-posti">● 8 posti disponibili</div>
+          <a href="https://wa.me/393466840207?text=Ciao!%20Vorrei%20info%20sul%20viaggio%20a%20Siviglia" target="_blank" class="card-wa-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Prenota su WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERIA -->
+  <section class="section galleria" id="gallery">
+    <p class="section-label">Momenti</p>
+    <h2 class="section-h2">Le facce di chi è già partito.</h2>
+
+    <div class="galleria-grid">
+      <div class="gal-item wide">
+        <img src="img/collage-cinque-terre.jpg" alt="Cinque Terre" style="object-position: top;">
+      </div>
+      <div class="gal-item">
+        <img src="img/group-wall.jpg" alt="Gruppo">
+      </div>
+      <div class="gal-item">
+        <img src="img/girls-beach.jpg" alt="Spiaggia">
+      </div>
+      <div class="gal-item">
+        <img src="img/guys-rocks.jpg" alt="Scogliera">
+      </div>
+      <div class="gal-item">
+        <img src="img/collage-sardegna.jpg" alt="Sardegna" style="object-position: top;">
+      </div>
+      <div class="gal-item wide">
+        <img src="img/collage-nerja.jpg" alt="Nerja" style="object-position: top;">
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <p class="section-label">Resta aggiornata</p>
+    <h2 class="section-h2">Nuovi viaggi in arrivo.</h2>
+    <p class="newsletter-sub">Iscriviti e sarai la prima a sapere quando apriamo le iscrizioni.</p>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" class="newsletter-input" placeholder="La tua email">
+      <button type="submit" class="newsletter-btn">Iscriviti</button>
+    </form>
+  </section>
+
+  <footer>
+    <span class="footer-logo">partiAMO?</span>
+    <ul class="footer-links">
+      <li><a href="#chi-siamo">Chi siamo</a></li>
+      <li><a href="#viaggi">Viaggi</a></li>
+      <li><a href="#gallery">Momenti</a></li>
+      <li><a href="https://instagram.com/_partiamo" target="_blank">Instagram</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 partiAMO?</span>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+    // chiudi menu se si clicca fuori
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
