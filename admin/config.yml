@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: 'it'
+
+media_folder: "."
+public_folder: ""
+
+collections:
+  - name: "contenuti"
+    label: "Contenuti"
+    files:
+      - name: "viaggi"
+        label: "Viaggi"
+        file: "data/viaggi.json"
+        fields:
+          - name: "lista"
+            label: "Lista viaggi"
+            label_singular: "Viaggio"
+            widget: "list"
+            fields:
+              - {label: "Destinazione", name: "title", widget: "string", hint: "Es: Marocco"}
+              - {label: "Sottotitolo", name: "subtitle", widget: "string", hint: "Es: Marrakech & Sahara"}
+              - {label: "Data", name: "date", widget: "string", hint: "Es: Agosto 2025"}
+              - {label: "Posti disponibili", name: "spots", widget: "string", hint: "Es: 3 posti disponibili"}
+              - {label: "Foto copertina", name: "image", widget: "image"}
+              - {label: "Numero WhatsApp", name: "whatsapp", widget: "string", hint: "Solo numeri, es: 393331234567"}
