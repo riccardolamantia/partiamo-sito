@@ -1,11 +1,14 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: riccardolamantia/partiamo-sito
   branch: main
+  auth_type: pkce
+  app_id: Ov23liaY0TppxGGCoSNx
 
 locale: 'it'
 
-media_folder: "."
-public_folder: ""
+media_folder: "img"
+public_folder: "/img"
 
 collections:
   - name: "contenuti"
