@@ -1,0 +1,36 @@
+{
+  "lista": [
+    {
+      "title": "Spagna",
+      "subtitle": "Andalusia",
+      "date": "Agosto 2025",
+      "spots": "3 posti disponibili",
+      "image": "img/group-spagna.jpg",
+      "whatsapp": "393331234567"
+    },
+    {
+      "title": "Caminito del Rey",
+      "subtitle": "Málaga",
+      "date": "Settembre 2025",
+      "spots": "5 posti disponibili",
+      "image": "img/gorge-spagna.jpg",
+      "whatsapp": "393331234567"
+    },
+    {
+      "title": "Calabria",
+      "subtitle": "Costa degli Dei",
+      "date": "Luglio 2025",
+      "spots": "2 posti disponibili",
+      "image": "img/beach-calabria.jpg",
+      "whatsapp": "393331234567"
+    },
+    {
+      "title": "Siviglia",
+      "subtitle": "Spagna",
+      "date": "Ottobre 2025",
+      "spots": "8 posti disponibili",
+      "image": "img/collage-girasoli.jpg",
+      "whatsapp": "393331234567"
+    }
+  ]
+}
