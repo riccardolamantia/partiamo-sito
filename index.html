@@ -724,14 +724,14 @@
         const data = await res.json();
         const grid = document.getElementById('viaggi-grid');
         grid.innerHTML = data.lista.map((v, i) => `
-          <div class="viaggio-card">
+          <div class="viaggio-card" onclick="window.location.href='viaggio.html?slug=${v.slug}'" style="cursor:pointer;">
             <img src="${v.image}" alt="${v.title}">
             <div class="card-overlay">
               <div class="card-dest">${v.title}</div>
               <div class="card-data">${v.subtitle} · ${v.date}</div>
               <div class="card-posti">● ${v.spots}</div>
-              <a href="https://wa.me/${v.whatsapp}?text=Ciao!%20Vorrei%20info%20sul%20viaggio%20in%20${encodeURIComponent(v.title)}" target="_blank" class="card-wa-btn">
-                ${waIcon} Prenota su WhatsApp
+              <a href="viaggio.html?slug=${v.slug}" class="card-wa-btn" onclick="event.stopPropagation()">
+                Scopri di più →
               </a>
             </div>
           </div>
