@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>partiAMO? — Viaggio</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --nero: #111110;
+      --sabbia: #F5F0E8;
+      --sabbia-scura: #EAE4D8;
+      --grigio: #888580;
+      --grigio-chiaro: #D6D1C8;
+      --accent: #E8292A;
+      --bianco: #FDFCFA;
+    }
+
+    body {
+      background: var(--bianco);
+      color: var(--nero);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(253,252,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grigio-chiaro);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.35rem;
+      color: var(--nero);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--grigio);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--nero); }
+
+    /* HERO */
+    .hero {
+      min-height: 70vh;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      min-height: 70vh;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--grigio-chiaro);
+      margin-bottom: 60px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grigio);
+    }
+
+    .meta-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--nero);
+    }
+
+    .meta-value.accent { color: var(--accent); }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grigio);
+      margin-bottom: 16px;
+    }
+
+    .description {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 60px;
+    }
+
+    .lists-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+
+    .list-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .check-icon.yes { color: #22c55e; }
+    .check-icon.no { color: var(--accent); }
+
+    /* CTA */
+    .cta-box {
+      background: var(--sabbia);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .cta-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--nero);
+      margin-bottom: 8px;
+    }
+
+    .cta-note {
+      color: var(--grigio);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 100px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .cta-sub {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--grigio);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--nero);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 80px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.22);
+      font-size: 0.78rem;
+    }
+
+    /* LOADING */
+    .loading {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grigio);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .hero-overlay { padding: 32px 24px; }
+      .content { padding: 48px 24px; }
+      .meta-row { gap: 24px; }
+      .lists-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cta-box { padding: 32px 24px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">partiAMO?</a>
+    <a href="index.html#viaggi" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Tutti i viaggi
+    </a>
+  </nav>
+
+  <div id="app">
+    <div class="loading">Caricamento...</div>
+  </div>
+
+  <footer>
+    <span class="footer-logo">partiAMO?</span>
+    <span class="footer-copy">© 2025 partiAMO?</span>
+  </footer>
+
+  <script>
+    const waIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
+    async function caricaViaggio() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+
+      if (!slug) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      try {
+        const res = await fetch('/data/viaggi.json');
+        const data = await res.json();
+        const viaggio = data.lista.find(v => v.slug === slug);
+
+        if (!viaggio) {
+          window.location.href = 'index.html';
+          return;
+        }
+
+        document.title = `partiAMO? — ${viaggio.title}`;
+
+        const includedHTML = (viaggio.included || []).map(item => `
+          <li>
+            <svg class="check-icon yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            ${item}
+          </li>
+        `).join('');
+
+        const notIncludedHTML = (viaggio.not_included || []).map(item => `
+          <li>
+            <svg class="check-icon no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            ${item}
+          </li>
+        `).join('');
+
+        document.getElementById('app').innerHTML = `
+          <section class="hero">
+            <img class="hero-img" src="${viaggio.image}" alt="${viaggio.title}">
+            <div class="hero-overlay">
+              <p class="hero-eyebrow">Viaggi tra sconosciuti</p>
+              <h1 class="hero-title">${viaggio.title}</h1>
+              <p class="hero-subtitle">${viaggio.subtitle}</p>
+            </div>
+          </section>
+
+          <div class="content">
+            <div class="meta-row">
+              <div class="meta-item">
+                <span class="meta-label">Data</span>
+                <span class="meta-value">${viaggio.date}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Durata</span>
+                <span class="meta-value">${viaggio.duration || '—'}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Disponibilità</span>
+                <span class="meta-value accent">${viaggio.spots}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">A partire da</span>
+                <span class="meta-value">${viaggio.price || '—'}</span>
+              </div>
+            </div>
+
+            <p class="section-label">Il viaggio</p>
+            <p class="description">${viaggio.description || ''}</p>
+
+            <div class="lists-grid">
+              <div class="list-section">
+                <h3>Cosa è incluso</h3>
+                <ul class="check-list">${includedHTML}</ul>
+              </div>
+              <div class="list-section">
+                <h3>Cosa NON è incluso</h3>
+                <ul class="check-list">${notIncludedHTML}</ul>
+              </div>
+            </div>
+
+            <div class="cta-box">
+              <div class="cta-price">${viaggio.price || ''}</div>
+              <p class="cta-note">a persona · posti limitati</p>
+              <a href="https://wa.me/${viaggio.whatsapp}?text=Ciao!%20Vorrei%20info%20sul%20viaggio%20in%20${encodeURIComponent(viaggio.title)}" target="_blank" class="cta-btn">
+                ${waIcon} Prenota su WhatsApp
+              </a>
+              <p class="cta-sub">Ti risponderemo entro 24 ore</p>
+            </div>
+          </div>
+        `;
+
+      } catch(e) {
+        console.error('Errore:', e);
+        window.location.href = 'index.html';
+      }
+    }
+
+    caricaViaggio();
+  </script>
+</body>
+</html>
