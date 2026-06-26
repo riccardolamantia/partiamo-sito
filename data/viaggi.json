@@ -31,6 +31,14 @@
       "spots": "8 posti disponibili",
       "image": "img/collage-girasoli.jpg",
       "whatsapp": "393206919499"
+    },
+    {
+      "title": "TEST",
+      "subtitle": "testing",
+      "date": "Test 2027",
+      "spots": "18",
+      "image": "/img/SUNP0024.JPG",
+      "whatsapp": "323206919499"
     }
   ]
 }
