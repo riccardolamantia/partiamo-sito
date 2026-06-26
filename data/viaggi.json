@@ -1,52 +1,60 @@
 {
   "lista": [
     {
+      "slug": "spagna-andalusia",
       "title": "Spagna",
       "subtitle": "Andalusia",
       "date": "Agosto 2025",
+      "duration": "8 giorni / 7 notti",
       "spots": "3 posti disponibili",
+      "price": "€890",
       "image": "img/group-spagna.jpg",
-      "whatsapp": "393206919499"
+      "whatsapp": "393331234567",
+      "description": "Un viaggio tra i paesaggi mozzafiato dell'Andalusia, tra città bianche, flamenco e tapas. Partiamo da Siviglia, passiamo per Ronda e arriviamo sulla costa di Nerja. Ogni giorno una sorpresa, ogni sera nuove amicizie.",
+      "included": ["Volo A/R da Milano", "Hotel in doppia", "Transfer aeroporto", "Guide locali", "Cena di benvenuto"],
+      "not_included": ["Pasti (pranzi e cene)", "Attività extra opzionali", "Assicurazione viaggio", "Spese personali"]
     },
     {
+      "slug": "caminito-del-rey",
       "title": "Caminito del Rey",
       "subtitle": "Málaga",
       "date": "Settembre 2025",
+      "duration": "5 giorni / 4 notti",
       "spots": "5 posti disponibili",
+      "price": "€620",
       "image": "img/gorge-spagna.jpg",
-      "whatsapp": "393206919499"
+      "whatsapp": "393331234567",
+      "description": "Il Caminito del Rey è uno dei percorsi più spettacolari d'Europa. Cammineremo su passerelle a picco sulla gola, circondati da rocce imponenti e natura selvaggia. Un'esperienza adrenalinica da fare almeno una volta nella vita.",
+      "included": ["Volo A/R da Roma", "Hotel in doppia", "Ingresso Caminito del Rey", "Transfer"],
+      "not_included": ["Pasti", "Attività extra", "Assicurazione viaggio"]
     },
     {
+      "slug": "calabria",
       "title": "Calabria",
       "subtitle": "Costa degli Dei",
       "date": "Luglio 2025",
+      "duration": "6 giorni / 5 notti",
       "spots": "2 posti disponibili",
+      "price": "€450",
       "image": "img/beach-calabria.jpg",
-      "whatsapp": "393206919499"
+      "whatsapp": "393331234567",
+      "description": "La Costa degli Dei è uno dei tratti di costa più belli d'Italia — e tra i meno conosciuti. Acque turchesi, spiagge di ciottoli bianchi, profumo di bergamotto e peperoncino. Un viaggio lento, fatto di mare, cibo e risate.",
+      "included": ["Alloggio in villa condivisa", "Transfer da/per aeroporto", "Cena di benvenuto", "Escursione in barca"],
+      "not_included": ["Volo", "Pasti (colazione esclusa)", "Attività extra"]
     },
     {
+      "slug": "siviglia",
       "title": "Siviglia",
       "subtitle": "Spagna",
       "date": "Ottobre 2025",
+      "duration": "4 giorni / 3 notti",
       "spots": "8 posti disponibili",
+      "price": "€390",
       "image": "img/collage-girasoli.jpg",
-      "whatsapp": "393206919499"
-    },
-    {
-      "title": "TEST",
-      "subtitle": "testing",
-      "date": "Test 2027",
-      "spots": "18",
-      "image": "/img/SUNP0024.JPG",
-      "whatsapp": "323206919499"
-    },
-    {
-      "title": "Test 2",
-      "subtitle": "testing",
-      "date": "TEST 2028",
-      "spots": "41",
-      "image": "/img/SUNP0048.JPG",
-      "whatsapp": "39333333333"
+      "whatsapp": "393331234567",
+      "description": "Siviglia in ottobre è magia pura — temperature perfette, niente folla, e la città che torna a vivere dopo l'estate. Tapas bar, palazzi moreschi, il Guadalquivir al tramonto. Un weekend lungo che sembra una vita.",
+      "included": ["Volo A/R", "Hotel in centro", "Tour guidato della città", "Serata flamenco"],
+      "not_included": ["Pasti", "Trasporti locali", "Assicurazione viaggio"]
     }
   ]
 }
