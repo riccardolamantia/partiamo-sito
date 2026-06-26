@@ -2,8 +2,7 @@ backend:
   name: github
   repo: riccardolamantia/partiamo-sito
   branch: main
-  auth_type: pkce
-  app_id: Ov23liaY0TppxGGCoSNx
+  base_url: https://sveltia-cms-auth.parti-amo.workers.dev
 
 locale: 'it'
 
