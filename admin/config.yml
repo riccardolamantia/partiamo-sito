@@ -22,9 +22,21 @@ collections:
             label_singular: "Viaggio"
             widget: "list"
             fields:
-              - {label: "Destinazione", name: "title", widget: "string", hint: "Es: Marocco"}
-              - {label: "Sottotitolo", name: "subtitle", widget: "string", hint: "Es: Marrakech & Sahara"}
+              - {label: "Slug (URL)", name: "slug", widget: "string", hint: "Solo lettere minuscole e trattini, es: spagna-andalusia"}
+              - {label: "Destinazione", name: "title", widget: "string", hint: "Es: Spagna"}
+              - {label: "Sottotitolo", name: "subtitle", widget: "string", hint: "Es: Andalusia"}
               - {label: "Data", name: "date", widget: "string", hint: "Es: Agosto 2025"}
+              - {label: "Durata", name: "duration", widget: "string", hint: "Es: 8 giorni / 7 notti"}
               - {label: "Posti disponibili", name: "spots", widget: "string", hint: "Es: 3 posti disponibili"}
+              - {label: "Prezzo", name: "price", widget: "string", hint: "Es: €890"}
               - {label: "Foto copertina", name: "image", widget: "image"}
               - {label: "Numero WhatsApp", name: "whatsapp", widget: "string", hint: "Solo numeri, es: 393331234567"}
+              - {label: "Descrizione", name: "description", widget: "text"}
+              - name: "included"
+                label: "Cosa è incluso"
+                widget: "list"
+                field: {label: "Voce", name: "item", widget: "string"}
+              - name: "not_included"
+                label: "Cosa NON è incluso"
+                widget: "list"
+                field: {label: "Voce", name: "item", widget: "string"}
