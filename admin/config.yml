@@ -21,6 +21,9 @@ collections:
             label: "Lista viaggi"
             label_singular: "Viaggio"
             widget: "list"
+            collapsed: true
+            minimize_collapsed: true
+            summary: "{{fields.title}} — {{fields.date}}"
             fields:
               - {label: "Slug (URL)", name: "slug", widget: "string", hint: "Solo lettere minuscole e trattini, es: spagna-andalusia"}
               - {label: "Destinazione", name: "title", widget: "string", hint: "Es: Spagna"}
