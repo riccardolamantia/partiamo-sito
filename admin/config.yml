@@ -38,8 +38,12 @@ collections:
               - name: "included"
                 label: "Cosa è incluso"
                 widget: "list"
+                collapsed: true
+                minimize_collapsed: true
                 field: {label: "Voce", name: "item", widget: "string"}
               - name: "not_included"
                 label: "Cosa NON è incluso"
                 widget: "list"
+                collapsed: true
+                minimize_collapsed: true
                 field: {label: "Voce", name: "item", widget: "string"}
