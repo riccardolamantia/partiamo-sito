@@ -11,8 +11,19 @@
       "image": "img/group-spagna.jpg",
       "whatsapp": "393331234567",
       "description": "Un viaggio tra i paesaggi mozzafiato dell'Andalusia, tra città bianche, flamenco e tapas. Partiamo da Siviglia, passiamo per Ronda e arriviamo sulla costa di Nerja. Ogni giorno una sorpresa, ogni sera nuove amicizie.",
-      "included": ["Volo A/R da Milano", "Hotel in doppia", "Transfer aeroporto", "Guide locali", "Cena di benvenuto"],
-      "not_included": ["Pasti (pranzi e cene)", "Attività extra opzionali", "Assicurazione viaggio", "Spese personali"]
+      "included": [
+        "Volo A/R da Milano",
+        "Hotel in doppia",
+        "Transfer aeroporto",
+        "Guide locali",
+        "Cena di benvenuto"
+      ],
+      "not_included": [
+        "Pasti (pranzi e cene)",
+        "Attività extra opzionali",
+        "Assicurazione viaggio",
+        "Spese personali"
+      ]
     },
     {
       "slug": "caminito-del-rey",
@@ -25,8 +36,17 @@
       "image": "img/gorge-spagna.jpg",
       "whatsapp": "393331234567",
       "description": "Il Caminito del Rey è uno dei percorsi più spettacolari d'Europa. Cammineremo su passerelle a picco sulla gola, circondati da rocce imponenti e natura selvaggia. Un'esperienza adrenalinica da fare almeno una volta nella vita.",
-      "included": ["Volo A/R da Roma", "Hotel in doppia", "Ingresso Caminito del Rey", "Transfer"],
-      "not_included": ["Pasti", "Attività extra", "Assicurazione viaggio"]
+      "included": [
+        "Volo A/R da Roma",
+        "Hotel in doppia",
+        "Ingresso Caminito del Rey",
+        "Transfer"
+      ],
+      "not_included": [
+        "Pasti",
+        "Attività extra",
+        "Assicurazione viaggio"
+      ]
     },
     {
       "slug": "calabria",
@@ -39,8 +59,17 @@
       "image": "img/beach-calabria.jpg",
       "whatsapp": "393331234567",
       "description": "La Costa degli Dei è uno dei tratti di costa più belli d'Italia — e tra i meno conosciuti. Acque turchesi, spiagge di ciottoli bianchi, profumo di bergamotto e peperoncino. Un viaggio lento, fatto di mare, cibo e risate.",
-      "included": ["Alloggio in villa condivisa", "Transfer da/per aeroporto", "Cena di benvenuto", "Escursione in barca"],
-      "not_included": ["Volo", "Pasti (colazione esclusa)", "Attività extra"]
+      "included": [
+        "Alloggio in villa condivisa",
+        "Transfer da/per aeroporto",
+        "Cena di benvenuto",
+        "Escursione in barca"
+      ],
+      "not_included": [
+        "Volo",
+        "Pasti (colazione esclusa)",
+        "Attività extra"
+      ]
     },
     {
       "slug": "siviglia",
@@ -53,8 +82,37 @@
       "image": "img/collage-girasoli.jpg",
       "whatsapp": "393331234567",
       "description": "Siviglia in ottobre è magia pura — temperature perfette, niente folla, e la città che torna a vivere dopo l'estate. Tapas bar, palazzi moreschi, il Guadalquivir al tramonto. Un weekend lungo che sembra una vita.",
-      "included": ["Volo A/R", "Hotel in centro", "Tour guidato della città", "Serata flamenco"],
-      "not_included": ["Pasti", "Trasporti locali", "Assicurazione viaggio"]
+      "included": [
+        "Volo A/R",
+        "Hotel in centro",
+        "Tour guidato della città",
+        "Serata flamenco"
+      ],
+      "not_included": [
+        "Pasti",
+        "Trasporti locali",
+        "Assicurazione viaggio"
+      ]
+    },
+    {
+      "slug": "test",
+      "title": "Test",
+      "subtitle": "test",
+      "date": "Test 2019",
+      "duration": "11 giorni / 10 notti",
+      "spots": "5 posti disponibili",
+      "price": "950€",
+      "image": "/img/SUNP0009.JPG",
+      "whatsapp": "393206919499",
+      "description": "Test test test test",
+      "included": [
+        "Test 1",
+        "test 2"
+      ],
+      "not_included": [
+        "tst 1",
+        "tst 2"
+      ]
     }
   ]
 }
