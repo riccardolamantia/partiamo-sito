@@ -93,26 +93,6 @@
         "Trasporti locali",
         "Assicurazione viaggio"
       ]
-    },
-    {
-      "slug": "test",
-      "title": "Test",
-      "subtitle": "test",
-      "date": "Test 2019",
-      "duration": "11 giorni / 10 notti",
-      "spots": "5 posti disponibili",
-      "price": "950€",
-      "image": "/img/SUNP0009.JPG",
-      "whatsapp": "393206919499",
-      "description": "Test test test test",
-      "included": [
-        "Test 1",
-        "test 2"
-      ],
-      "not_included": [
-        "tst 1",
-        "tst 2"
-      ]
     }
   ]
 }
